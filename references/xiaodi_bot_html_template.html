@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小狄氧舱账号维护智能机器人 · {{城市/店名}} 本周热点与10条拍摄脚本</title>
+<style>
+  :root {
+    --primary: #0F3D6E;
+    --cyan: #00A6C0;
+    --accent: #F27A21;
+    --bg: #F4F7FA;
+    --card: #FFFFFF;
+    --text: #1E293B;
+    --muted: #64748B;
+    --border: #E2E8F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    padding: 24px 16px 60px;
+  }
+  .container { max-width: 1080px; margin: 0 auto; }
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #155E95 60%, var(--cyan) 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 32px 36px;
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    box-shadow: 0 10px 25px rgba(15, 61, 110, 0.15);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 13px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .hero h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+  .hero-meta { font-size: 14px; opacity: 0.9; }
+  .print-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(242, 122, 33, 0.35);
+  }
+  .print-btn:hover { opacity: 0.92; }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 28px 0 16px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  .radar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+  .radar-card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px 22px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  }
+  .radar-card h3 {
+    font-size: 16px;
+    color: var(--primary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .radar-item {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 14px;
+  }
+  .radar-item:last-child { border-bottom: none; }
+  .radar-item strong { color: #0F172A; display: block; margin-bottom: 2px; }
+  .script-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 22px;
+    border: 1px solid var(--border);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    page-break-inside: avoid;
+  }
+  .script-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+  .script-num {
+    background: var(--primary);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 8px;
+    margin-right: 10px;
+  }
+  .script-title { font-size: 18px; font-weight: 700; color: #0F172A; }
+  .tag-group { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: #E0F2FE;
+    color: #0369A1;
+    font-weight: 600;
+  }
+  .tag.orange { background: #FFEDD5; color: #C2410C; }
+  .meta-box {
+    background: #F8FAFC;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #334155;
+    margin-bottom: 16px;
+    border-left: 3px solid var(--cyan);
+  }
+  .teleprompter {
+    background: #FFFBF5;
+    border: 1px solid #FED7AA;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .teleprompter-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+  }
+  .teleprompter p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #0F172A;
+    margin-bottom: 8px;
+  }
+  .teleprompter p:last-child { margin-bottom: 0; }
+  .cue {
+    display: inline-block;
+    background: #FDE68A;
+    color: #92400E;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-right: 6px;
+  }
+  .publish-box {
+    font-size: 13.5px;
+    color: var(--muted);
+    background: #F1F5F9;
+    padding: 10px 14px;
+    border-radius: 8px;
+  }
+  .compliance-footer {
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    color: #991B1B;
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 13.5px;
+    margin-top: 30px;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .print-btn { display: none; }
+    .script-card { box-shadow: none; border: 1px solid #CBD5E1; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div>
+      <div class="hero-badge">DNAKE 狄耐克（300884）· 小狄氧舱账号维护智能机器人</div>
+      <h1>{{城市/店名}} · 本周热点与10条拍摄脚本</h1>
+      <div class="hero-meta">主推型号：{{氧舱型号}} ｜ 生成日期：{{日期}} ｜ 风格：去AI味口语提词版</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">打印 / 另存为 PDF</button>
+  </div>
+
+  <div class="section-title">一、本周同城 & 全国康养热点雷达</div>
+  <div class="radar-grid">
+    <div class="radar-card">
+      <h3>📍 本地同城热点（3条）</h3>
+      <div class="radar-item"><strong>1. {{本地热点1标题}}</strong>切入角度：{{切入说明}}</div>
+      <div class="radar-item"><strong>2. {{本地热点2标题}}</strong>切入角度：{{切入说明}}</div>
+      <div class="radar-item"><strong>3. {{本地热点3标题}}</strong>切入角度：{{切入说明}}</div>
+    </div>
+    <div class="radar-card">
+      <h3>🔥 全国康养热点（3条）</h3>
+      <div class="radar-item"><strong>1. {{全国热点1标题}}</strong>切入角度：{{切入说明}}</div>
+      <div class="radar-item"><strong>2. {{全国热点2标题}}</strong>切入角度：{{切入说明}}</div>
+      <div class="radar-item"><strong>3. {{全国热点3标题}}</strong>切入角度：{{切入说明}}</div>
+    </div>
+  </div>
+
+  <div class="section-title">二、本周10条极简可拍短视频脚本（直接照念即可）</div>
+  <!-- 此处按相同结构循环输出 01 ~ 10 号脚本卡片 -->
+  <div class="script-card">
+    <div class="script-header">
+      <div><span class="script-num">脚本 01</span><span class="script-title">{{爆款标题}}</span></div>
+      <div class="tag-group"><span class="tag">{{结合热点}}</span><span class="tag orange">{{目标人群}}</span></div>
+    </div>
+    <div class="meta-box"><strong>📱 极简拍摄指导：</strong>{{机位、动作与镜头切换说明}}</div>
+    <div class="teleprompter">
+      <div class="teleprompter-label">口播提词（大字号 · 去AI味自然口语）</div>
+      <p><span class="cue">前3秒钩子</span>{{钩子台词}}</p>
+      <p><span class="cue">痛点+卖点</span>{{中段台词}}</p>
+      <p><span class="cue">同城引导</span>{{结尾引导台词}}</p>
+    </div>
+    <div class="publish-box"><strong>发布文案与话题：</strong>{{配文}} #{{城市}}同城 #小狄氧舱 #家用氧舱 #康养体验</div>
+  </div>
+
+  <div class="compliance-footer">
+    <strong>⚠️ 发布合规自查提醒：</strong>本脚本已过滤医疗违禁词。拍摄时请勿在字幕或口播中自行添加“治疗、治愈、根治、抗癌、降血压、替代吃药”等词汇，避免平台限流。
+  </div>
+</div>
+</body>
+</html>
