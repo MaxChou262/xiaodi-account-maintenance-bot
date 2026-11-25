@@ -36,12 +36,3 @@ xiaodi-account-maintenance-bot/
 **示例**：
 - `@小狄氧舱账号维护智能机器人 厦门旗舰店 + GYCHA双人舱 + 本周热点+本周脚本`
 - `@小狄氧舱账号维护智能机器人 成都高新体验馆 + GYCHC碳纤维四人舱 + 本周热点+10条针对企业老板的脚本`
-
----
-
-## 四、 如何上传至 GitHub 并安装到 WorkBuddy
-1. **上传至 GitHub**：在 GitHub 新建公开仓库 `xiaodi-account-maintenance-bot`，将本目录所有文件拖拽上传或通过 `git push` 推送。
-2. **安装到电脑端 WorkBuddy**：打开 WorkBuddy → 进入左侧「技能 / Skills」管理 → 点击「导入技能 / 添加 Skill」→ 选择 **从 GitHub 链接导入**（填入仓库地址）或 **导入本地文件夹 / ZIP 包** 即可启用。
-
----
-**License**：MIT License
